@@ -3,7 +3,7 @@ import { cacheLife, cacheTag } from "next/cache"
 import { join } from "path"
 
 export async function getCachedStats(from: string | null, to: string | null) {
-  "use cache"
+  "use cache: remote"
   cacheTag("stats")
   cacheLife("days")
   return db_stats(from, to)
