@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "name": "lorenzo",
+    "totalVisits": 1240,
+    "uniqueVisitors": 870,
+    "bounceRate": 0.34,
+    "avgSessionDuration": 185
+  }
+]
