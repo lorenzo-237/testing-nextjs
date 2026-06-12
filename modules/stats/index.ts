@@ -6,7 +6,7 @@ export async function getCachedStats(from: string | null, to: string | null) {
   "use cache: remote"
   cacheTag("stats")
   cacheLife("days")
-  return db_stats(from, to)
+  return test_stats(from, to)
 }
 
 const seconds = 3
@@ -21,4 +21,43 @@ async function db_stats(from: string | null, to: string | null) {
   }
   const raw = readFileSync(filePath, "utf-8")
   return JSON.parse(raw)
+}
+
+async function test_stats(from: string | null, to: string | null) {
+  await new Promise((resolve) => setTimeout(resolve, 1000 * seconds))
+
+  if (from === "1") {
+    return [
+      {
+        id: 1,
+        name: "lorenzo",
+        totalVisits: 1240,
+        uniqueVisitors: 870,
+        bounceRate: 0.34,
+        avgSessionDuration: 185,
+      },
+    ]
+  } else if (from === "2") {
+    return [
+      {
+        id: 1,
+        name: "lorenzo",
+        totalVisits: 10000,
+        uniqueVisitors: 10000,
+        bounceRate: 0.34,
+        avgSessionDuration: 185,
+      },
+    ]
+  } else {
+    return [
+      {
+        id: 1,
+        name: "lorenzo",
+        totalVisits: 1000,
+        uniqueVisitors: 100,
+        bounceRate: 0.34,
+        avgSessionDuration: 185,
+      },
+    ]
+  }
 }
